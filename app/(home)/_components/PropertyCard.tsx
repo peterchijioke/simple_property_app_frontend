@@ -1,6 +1,7 @@
 import React from "react";
 import { Property } from "@/types/property.type";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import PropertyImage from "./PropertyImage";
 
 interface PropertyCardProps {
