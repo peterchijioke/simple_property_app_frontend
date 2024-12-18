@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button";
 import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
 } from "@/components/ui/pagination";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PaginationComponentProps {
   currentPage: number;
@@ -19,7 +19,6 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({
   totalPages,
   onPageChange,
 }) => {
-  // Generate page numbers dynamically
   const generatePageNumbers = () => {
     let pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -39,31 +38,23 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({
   };
 
   return (
-    <Pagination>
+    <Pagination className=" justify-start">
       <PaginationContent>
         <PaginationItem>
-          <Button
-            size={"icon"}
-            variant={"outline"}
-            disabled={currentPage === 1}
+          <PaginationPrevious
+            href="#"
             onClick={() => onPageChange(currentPage - 1)}
-          >
-            <ChevronLeft className="" />
-          </Button>
+          />
         </PaginationItem>
         {generatePageNumbers()}
         <PaginationItem>
           <PaginationEllipsis />
         </PaginationItem>
         <PaginationItem>
-          <Button
-            size={"icon"}
-            variant={"outline"}
-            disabled={currentPage === totalPages}
+          <PaginationNext
+            href="#"
             onClick={() => onPageChange(currentPage + 1)}
-          >
-            <ChevronRight className="" />
-          </Button>
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

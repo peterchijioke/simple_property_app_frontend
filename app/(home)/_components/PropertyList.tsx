@@ -41,25 +41,26 @@ export default function PropertyList() {
   }
 
   const handlePageChange = (newPage: number) => {
+    console.log("====================================");
+    console.log(newPage);
+    console.log("====================================");
     if (newPage > 0 && newPage <= totalPages) {
       setPageData((prevData) => ({ ...prevData, page: newPage }));
     }
   };
 
   return (
-    <div className=" w-full h-full flex items-center justify-center bg-gray-300">
-      <div className="grid h-full w-full bg-slate-500 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {properties.map((property) => (
-          <PropertyCard key={property.id} property={property} />
-        ))}
+    <div className="grid h-full w-full py-10  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+      {properties.map((property) => (
+        <PropertyCard key={property.id} property={property} />
+      ))}
 
-        <div className=" w-full mt-6">
-          <PaginationComponent
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        </div>
+      <div className=" flex flex-row justify-start w-full mt-6">
+        <PaginationComponent
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
       </div>
     </div>
   );

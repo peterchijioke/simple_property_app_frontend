@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import React from "react";
-import PropertyList from "./_components/PropertyList";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import PropertyView from "../_components/PropertyView";
 
 export const metadata: Metadata = {
   title: "Property Listings",
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function page() {
   return (
-    <ScrollArea className="  container w-full h-screen">
-      <PropertyList />
-    </ScrollArea>
+    <div className="  container w-full h-screen">
+      <PropertyView />
+    </div>
   );
 }
