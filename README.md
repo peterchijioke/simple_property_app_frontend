@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+# Frontend Property Listing App
+
+This is a frontend application built using **Next.js 15**, which is a React-based framework for building web applications. This app displays a list of properties and includes a pagination component to navigate through multiple pages of properties.
+
+## Features
+
+- Property listing with details such as name, address, price, and type.
+- Pagination for browsing through large sets of property data.
+- Responsive design for optimal viewing on mobile devices.
+
+## Tech Stack
+
+- **Next.js 15** - A React framework for server-rendered and statically generated web apps.
+- **React** - A JavaScript library for building user interfaces.
+- **Tailwind CSS** - A utility-first CSS framework for creating custom designs quickly.
+- **TypeScript** - A statically typed superset of JavaScript that adds optional types to the language.
+- **SWR** - A React hook for data fetching, caching, and revalidation.
+- **Shadcn UI** - A utility-first design system for building modern UIs.
 
 ## Getting Started
 
-First, run the development server:
+To get started with this project, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+Make sure you have the following installed on your machine:
+
+- **Node.js**: [Download Node.js](https://nodejs.org/)
+- **pnpm**: [Install pnpm](https://pnpm.io/)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd <project-folder>
+   ```
+
+2. Install dependencies using `pnpm`:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   pnpm dev
+   ```
+
+4. Open your browser and go to `http://localhost:3000` to see the application in action.
+
+## Project Structure
+
+Here's an overview of the project structure:
+
+```
+/pages
+  /index.tsx               # Home page that lists properties
+  /[id].tsx                 # Page to view a single property
+/components
+  /PropertyCard.tsx         # Displays a single property
+  /PaginationComponent.tsx  # Handles pagination for property list
+/services
+  /getListing.ts            # Service to fetch property data from API
+/types
+  /property.type.ts         # TypeScript types for property data
+/styles
+  /globals.css              # Global styles for the application
+/public
+  /images                   # Image assets for properties
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Pages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **`index.tsx`**: The homepage that lists all properties with pagination.
+- **`[id].tsx`**: A dynamic page that shows details of a single property.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Components
 
-## Learn More
+- **`PropertyCard.tsx`**: This component is used to display individual property details like name, price, address, and an image.
+- **`PaginationComponent.tsx`**: A reusable component for rendering pagination controls.
 
-To learn more about Next.js, take a look at the following resources:
+### Services
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **`getListing.ts`**: Contains the logic for fetching property data from an API endpoint.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Styling
 
-## Deploy on Vercel
+This project uses **Tailwind CSS** for styling. If you want to customize the design, you can modify the `tailwind.config.js` file, or you can add custom CSS to the `globals.css` file.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Customizing Tailwind
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Tailwind classes are used throughout the app in JSX files.
+- If you need to adjust the design system, you can edit `tailwind.config.js`.
+
+## API
+
+The application fetches data from an API. Here's the structure of the expected response:
+
+### Example API Response
+
+```json
+{
+  "message": "Properties retrieved successfully",
+  "data": [
+    {
+      "id": 1,
+      "name": "Luxury Condo",
+      "address": "123 Main St, Toronto",
+      "price": "$500,000",
+      "propertyType": "Condo",
+      "imageUrl": "https://example.com/property-image.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Modern House",
+      "address": "456 Oak St, Vancouver",
+      "price": "$1,200,000",
+      "propertyType": "House",
+      "imageUrl": "https://example.com/property-image.jpg"
+    }
+  ],
+  "meta": {
+    "currentPage": 1,
+    "itemsPerPage": 3,
+    "totalItems": 6,
+    "totalPages": 2
+  }
+}
+```
+
+### Endpoints
+
+- **GET** `/properties`: Fetches a list of properties. You can pass query parameters for pagination:
+
+  - `limit`: Number of properties per page.
+  - `page`: Page number to fetch.
+
+## Running the Application Locally
+
+### Development Mode
+
+To run the app in development mode, use the following command:
+
+```bash
+pnpm dev
+```
+
+This will start the application and open it in your browser at `http://localhost:3000`.
