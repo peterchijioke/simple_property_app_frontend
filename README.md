@@ -34,8 +34,8 @@ Make sure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
-   cd <project-folder>
+   gh repo clone peterchijioke/simple_property_app_frontend
+   cd simple_property_app_frontend
    ```
 
 2. Install dependencies using `pnpm`:
@@ -138,6 +138,7 @@ The application fetches data from an API. Here's the structure of the expected r
 
   - `limit`: Number of properties per page.
   - `page`: Page number to fetch.
+- **GET** `/properties/:id`:
 
 ## Running the Application Locally
 
